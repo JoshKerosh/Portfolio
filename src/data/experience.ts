@@ -66,11 +66,9 @@ export const experience: ExperienceItem[] = [
   {
     period: 'Various roles',
     role: 'Customer Service & IT Support',
-    company: 'Call Center Industry',
+    company: '',
     location: '📍 Costa Rica',
-    bullets: [
-      'Provided technical and customer support in fast-paced call center environments, handling troubleshooting, escalations, and client communication.',
-    ],
+    bullets: [],
   },
   {
     period: '2011 – 2013',
