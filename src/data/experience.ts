@@ -45,7 +45,7 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    period: 'November 2021 – January 2023',
+    period: '2011 – 2013',
     role: 'Backend Developer',
     company: 'Global Gaming Labs',
     location: '📍 Costa Rica',
