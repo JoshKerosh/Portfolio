@@ -1,0 +1,49 @@
+---
+import { projects } from '../data/projects';
+---
+<section id="projects" class="fade-in">
+  <div class="section-label">05 // projects</div>
+  <h2 class="section-title">What I've Built</h2>
+  <div class="section-divider"></div>
+  <div class="projects-grid">
+    {projects.map(p => {
+      const isBitaya = p.name === 'BITAYA Incluye';
+      const cardStyle = isBitaya
+        ? 'border-color:rgba(124,255,107,.35);background:linear-gradient(135deg,var(--bg-card) 0%,rgba(124,255,107,.05) 100%);'
+        : '';
+      return (
+        <div class={`project-card${p.featured ? ' featured' : ''}`} style={cardStyle}>
+          <div class="project-header">
+            <span class="project-icon">{p.icon}</span>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">
+              {p.badges && p.badges.map(b => {
+                if (b.style === 'gold') return (
+                  <span style="font-size:.67rem;padding:3px 8px;background:rgba(255,215,0,.15);border:1px solid gold;border-radius:12px;color:gold;font-weight:700;font-family:'JetBrains Mono',monospace;">{b.label}</span>
+                );
+                if (b.style === 'pink') return (
+                  <span class="project-badge-featured">{b.label}</span>
+                );
+                if (b.style === 'green') return (
+                  <span style="font-size:.67rem;padding:3px 8px;background:rgba(124,255,107,.15);border:1px solid var(--green-dim);border-radius:12px;color:var(--green);font-weight:600;font-family:'JetBrains Mono',monospace;">{b.label}</span>
+                );
+                return null;
+              })}
+            </div>
+          </div>
+          <div class="project-name">{p.name}</div>
+          <div class="project-org">{p.org}</div>
+          <p class="project-desc">{p.desc}</p>
+          {p.mission && (
+            <div style="margin-bottom:14px;padding:10px 12px;background:var(--bg-base);border:1px solid var(--border);border-radius:var(--radius-sm);border-left:3px solid var(--green);">
+              <p style="font-size:.78rem;font-family:'JetBrains Mono',monospace;color:var(--green);margin-bottom:3px;">// mission</p>
+              <p style="font-size:.82rem;color:var(--text-muted);font-style:italic;line-height:1.5;">{p.mission}</p>
+            </div>
+          )}
+          <div class="project-tags">
+            {p.tags.map(t => <span class="project-tag">{t}</span>)}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>

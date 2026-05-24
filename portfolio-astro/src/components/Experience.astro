@@ -1,0 +1,45 @@
+---
+import { experience } from '../data/experience';
+---
+<div class="bg-band" id="band-experience">
+<section id="experience" class="fade-in">
+  <div class="section-label">06 // experience</div>
+  <h2 class="section-title">Work History</h2>
+  <div class="section-divider"></div>
+
+  <div class="timeline">
+    {experience.map(item => (
+      <div class="timeline-item">
+        <div class={`timeline-dot${item.current ? ' current' : ''}`}></div>
+        <div class="timeline-period">{item.period}</div>
+        <div class="timeline-role">{item.role}</div>
+        <div class="timeline-company">{item.company}</div>
+        <div class="timeline-location">{item.location}</div>
+        <ul class="timeline-bullets">
+          {item.bullets.map(b => <li>{b}</li>)}
+        </ul>
+        {item.stack && (
+          <div class="timeline-stack">
+            {item.stack.map(s => (
+              <span class={`badge${s.variant ? ' ' + s.variant : ''}`}>{s.label}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <!-- CV Download -->
+  <div class="cv-block">
+    <div class="cv-block-text">
+      <h3>📄 Download My Resume</h3>
+      <p>Full PDF version · Last updated May 2026</p>
+    </div>
+    <div class="cv-actions">
+      <a href="/resume-joshua-jimenez.pdf" download class="btn btn-green">↓ Download PDF</a>
+      <a href="/resume-joshua-jimenez.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">↗ View Online</a>
+    </div>
+  </div>
+
+</section>
+</div>
