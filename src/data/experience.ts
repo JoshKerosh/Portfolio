@@ -45,23 +45,6 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    period: '2011 – 2013',
-    role: 'Backend Developer',
-    company: 'Global Gaming Labs',
-    location: '📍 Costa Rica',
-    bullets: [
-      'Built and maintained high-volume backend services in .NET Framework, handling core game logic, transaction processing, and secure data persistence via SQL Server.',
-      'Designed relational schemas for player transactions and game state, ensuring data integrity under concurrent load.',
-      'Delivered JavaScript-based UI components integrated with IIS-hosted backend services.',
-    ],
-    stack: [
-      { label: '.NET' },
-      { label: 'SQL Server' },
-      { label: 'JavaScript' },
-      { label: 'IIS' },
-    ],
-  },
-  {
     period: 'June 2022 – December 2022',
     role: 'Data Analyst',
     company: 'Publicis Groupe Delivery',
@@ -78,6 +61,23 @@ export const experience: ExperienceItem[] = [
       { label: 'Snowflake', variant: 'orange' },
       { label: 'KNIME' },
       { label: 'GTM' },
+    ],
+  },
+  {
+    period: '2011 – 2013',
+    role: 'Backend Developer',
+    company: 'Global Gaming Labs',
+    location: '📍 Costa Rica',
+    bullets: [
+      'Built and maintained high-volume backend services in .NET Framework, handling core game logic, transaction processing, and secure data persistence via SQL Server.',
+      'Designed relational schemas for player transactions and game state, ensuring data integrity under concurrent load.',
+      'Delivered JavaScript-based UI components integrated with IIS-hosted backend services.',
+    ],
+    stack: [
+      { label: '.NET' },
+      { label: 'SQL Server' },
+      { label: 'JavaScript' },
+      { label: 'IIS' },
     ],
   },
 ];
