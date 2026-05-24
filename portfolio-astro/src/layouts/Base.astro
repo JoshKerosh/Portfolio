@@ -1,0 +1,234 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Joshua Jiménez — Full-Stack Developer",
+  description = "Full-Stack Developer based in San José, Costa Rica. Building APIs, reactive UIs, and AI-assisted workflows. Currently at Pernix Solutions.",
+} = Astro.props;
+
+const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23cc1a6a'/><text x='16' y='22' font-family='Inter,sans-serif' font-size='14' font-weight='800' text-anchor='middle' fill='white'>JJ</text></svg>`;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+
+  <!-- SEO & SOCIAL PREVIEW -->
+  <meta name="description" content={description} />
+  <meta name="author" content="Joshua Jiménez" />
+  <meta name="theme-color" content="#cc1a6a" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://joshuajimenez.dev/" />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content="Full-Stack Developer · Python · Vue 3 · FastAPI · AWS. Building cybersecurity tooling at Pernix Solutions and winning hackathons in Costa Rica." />
+  <meta property="og:image"       content="https://joshuajimenez.dev/foto-linkedin.png" />
+  <meta property="og:image:width"  content="400" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:locale"      content="en_US" />
+  <meta property="og:site_name"   content="Joshua Jiménez Portfolio" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content="Full-Stack Developer · Python · Vue 3 · FastAPI · AWS. Building cybersecurity tooling at Pernix Solutions." />
+  <meta name="twitter:image"       content="https://joshuajimenez.dev/foto-linkedin.png" />
+
+  <link rel="icon" type="image/svg+xml" href={faviconSvg} />
+  <link rel="apple-touch-icon" href={faviconSvg} />
+  <link rel="canonical" href="https://joshuajimenez.dev/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joshua Jiménez",
+    "url": "https://joshuajimenez.dev/",
+    "image": "https://joshuajimenez.dev/foto-linkedin.png",
+    "jobTitle": "Full-Stack Developer",
+    "worksFor": { "@type": "Organization", "name": "Pernix Solutions" },
+    "address": { "@type": "PostalAddress", "addressLocality": "San José", "addressCountry": "CR" },
+    "email": "jjl1089@gmail.com",
+    "sameAs": ["https://linkedin.com/in/joshuajl", "https://github.com/JoshKerosh"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+
+<a href="#hero" class="skip-link">Skip to content</a>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Main navigation">
+  <a href="#hero" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div style="width:36px;height:36px;border-radius:8px;background:var(--pink-dim);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:800;color:#fff;letter-spacing:-.03em;flex-shrink:0;">JJ</div>
+    <span style="font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:-.02em;white-space:nowrap;background:linear-gradient(90deg,#ffffff,var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Joshua Jiménez</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu">
+  <a href="#about"      id="mm-about">About</a>
+  <a href="#skills"     id="mm-skills">Skills</a>
+  <a href="#education"  id="mm-education">Education</a>
+  <a href="#projects"   id="mm-projects">Projects</a>
+  <a href="#experience" id="mm-experience">Experience</a>
+  <a href="#contact"    id="mm-contact">Contact</a>
+</div>
+
+<main>
+  <slot />
+</main>
+
+<!-- Scroll progress -->
+<div id="scroll-progress"></div>
+
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Footer -->
+<footer>
+  <span>Joshua Jiménez Leitón</span> · Built in San José, Costa Rica · 2026 · <a href="https://github.com/JoshKerosh" target="_blank" rel="noopener noreferrer" style="color:var(--green);text-decoration:none;">{'{ source }'}</a>
+</footer>
+
+<script is:inline>
+  // Hamburger
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(hamburger.classList.contains('open')));
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+  document.querySelectorAll('#mobile-menu a').forEach(function(a) {
+    a.addEventListener('click', closeMobile);
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobile();
+  });
+
+  // Fade-in on scroll
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  // Active nav highlight
+  var navSections = document.querySelectorAll('section[id], div[id="skills"]');
+  var navLinks    = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  var mobileLinks = document.querySelectorAll('#mobile-menu a');
+
+  function updateActiveNav() {
+    var current = 'hero';
+    navSections.forEach(function(s) {
+      if (s.getBoundingClientRect().top <= 90) current = s.id;
+    });
+    navLinks.forEach(function(a) {
+      a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
+    });
+    mobileLinks.forEach(function(a) {
+      a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  // Scroll progress bar
+  var progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (scrolled / total * 100) + '%';
+  }, { passive: true });
+
+  // Back to top button
+  var backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  // Copy email
+  function showCopiedFeedback() {
+    var btn = document.getElementById('copy-email-btn');
+    var tooltip = document.getElementById('copy-tooltip');
+    btn.style.color = '#7cff6b';
+    tooltip.classList.add('show');
+    setTimeout(function() { tooltip.classList.remove('show'); btn.style.color = 'var(--text-dim)'; }, 1800);
+  }
+  window.copyEmail = function() {
+    var email = 'jjl1089@gmail.com';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(email).then(showCopiedFeedback).catch(function() { fallbackCopy(email); });
+    } else {
+      fallbackCopy(email);
+    }
+  };
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); showCopiedFeedback(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
+  // WhatsApp obfuscated link
+  window.openWA = function(e) {
+    e.preventDefault();
+    var p = atob('NTA2NzI4NDg4NDY=');
+    window.open('https://wa.me/' + p, '_blank', 'noopener,noreferrer');
+  };
+
+  // Typewriter effect
+  (function() {
+    var roles = ['Full-Stack Developer', 'AI-Assisted Developer', 'Backend Engineer'];
+    var el = document.getElementById('typewriter');
+    if (!el) return;
+    var roleIdx = 0, charIdx = 0, deleting = false;
+    var TYPE_SPEED = 75, DELETE_SPEED = 40, PAUSE = 1800;
+    function tick() {
+      var current = roles[roleIdx];
+      if (!deleting) {
+        el.textContent = current.slice(0, ++charIdx);
+        if (charIdx === current.length) { deleting = true; setTimeout(tick, PAUSE); return; }
+      } else {
+        el.textContent = current.slice(0, --charIdx);
+        if (charIdx === 0) { deleting = false; roleIdx = (roleIdx + 1) % roles.length; }
+      }
+      setTimeout(tick, deleting ? DELETE_SPEED : TYPE_SPEED);
+    }
+    tick();
+  })();
+</script>
+
+</body>
+</html>
